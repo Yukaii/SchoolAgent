@@ -1,0 +1,23 @@
+// Place all the styles related to the import controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#import-form {
+  max-width: 20em;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 1em 0em;
+  text-align: center;
+}
+
+#import-submit {
+  margin: 0 auto;
+  display: block;
+}

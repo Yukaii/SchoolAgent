@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'import#index'
+  get  '/result' => 'import#result', as: :import_result
+  post '/import' => 'import#import_course', as: :import_course
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

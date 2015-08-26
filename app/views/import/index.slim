@@ -1,0 +1,19 @@
+h1.title 課程匯入(小幫手)
+
+.container
+  = form_tag '/import', id: 'import-form'
+    .row
+      | 學號
+      = text_field_tag 'studentno', nil, :class => 'input-group form-control', required: ''
+    .row
+      | 身份證
+      = text_field_tag 'idcard', nil, :class => 'input-group form-control', required: ''
+    .row
+      | 生日(811010)
+      = text_field_tag 'birthday', nil, :class => 'input-group form-control', required: ''
+    .row
+      | 密碼
+      = text_field_tag 'password', nil, type: :password, :class => 'input-group form-control', required: ''
+    br
+    .row
+      = submit_tag '一鍵匯入', 'class': 'btn btn-default', id: 'import-submit'
