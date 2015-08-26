@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -61,6 +62,8 @@ gem 'iconv', require: false
 gem 'rmagick', require: false
 
 gem 'rename'
+
+gem 'thin'
 
 group :development do
   gem 'better_errors', '~> 2.0.0'
