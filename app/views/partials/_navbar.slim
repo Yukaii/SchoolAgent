@@ -1,0 +1,4 @@
+ul.navbar
+  li= link_to '首頁', root_path
+  - if current_user.blank?
+    li= link_to '登入', user_omniauth_authorize_path(:colorgy)

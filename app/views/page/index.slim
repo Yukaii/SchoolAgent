@@ -1,0 +1,5 @@
+.container
+  - if current_user.blank?
+    = link_to '請先登入 Colorgy', user_omniauth_authorize_path(:colorgy)
+  - else
+    = link_to '開始匯入', import_path
