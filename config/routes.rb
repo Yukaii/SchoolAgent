@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'page#index'
+  get 'about' => 'page#about', as: :about
 
   get  '/import' => 'import#index', as: :import
   post '/import' => 'import#import_course', as: :import_course
