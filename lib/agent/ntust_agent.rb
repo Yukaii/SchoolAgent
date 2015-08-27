@@ -22,27 +22,36 @@ class NtustAgent
 
     return if studentno.nil? || idcard.nil? || birthday.nil? || password.nil?
 
-    res = http_client.get "#{@base_url}/ntust_stu/stu.aspx", nil, { 'User-Agent' => @user_agent }
-    set_doc(res.content)
 
-    # OCR 這幾乎百分百通過的驗證碼（不可質疑你的 Tesseract）
-    File.write(Rails.root.join('tmp', "#{studentno}.png"), http_client.get_content("https://stu255.ntust.edu.tw/ntust_stu/VCode.aspx"))
-    img = RTesseract.new(Rails.root.join('tmp', "#{studentno}.png"))
-    code = img.to_s.gsub(/[^\dA-Z]/,'')
+    10.times do
+      res = http_client.get "#{@base_url}/ntust_stu/stu.aspx", nil, { 'User-Agent' => @user_agent }
+      set_doc(res.content)
 
-    login_res = http_client.post("#{@base_url}/ntust_stu/stu.aspx", view_state.merge({
-      "studentno" => studentno,
-      "idcard" => idcard,
-      "birthday" => birthday,
-      "password" => password,
-      "code_box" => code,
-      "Button1" => "登入系統",
-      # "Button2"=>"登出"
-    }), { 'User-Agent' => @user_agent })
+      # OCR 這幾乎百分百通過的驗證碼（不可質疑你的 Tesseract）
+      File.write(Rails.root.join('tmp', "#{studentno}.png"), http_client.get_content("https://stu255.ntust.edu.tw/ntust_stu/VCode.aspx"))
+      img = RTesseract.new(Rails.root.join('tmp', "#{studentno}.png"))
+      code = img.to_s.gsub(/[^\dA-Z]/,'')
 
-    # manually follow redirection Zzzz
-    menu_res = http_client.get "https://stu255.ntust.edu.tw/ntust_stu/stu_menu.aspx", nil, { 'User-Agent' => @user_agent }
-    set_doc(menu_res.content)
+      login_res = http_client.post("#{@base_url}/ntust_stu/stu.aspx", view_state.merge({
+        "studentno" => studentno,
+        "idcard" => idcard,
+        "birthday" => birthday,
+        "password" => password,
+        "code_box" => code,
+        "Button1" => "登入系統",
+        # "Button2"=>"登出"
+      }), { 'User-Agent' => @user_agent })
+
+      # manually follow redirection Zzzz
+      menu_res = http_client.get "https://stu255.ntust.edu.tw/ntust_stu/stu_menu.aspx", nil, { 'User-Agent' => @user_agent }
+      set_doc(menu_res.content)
+
+      if menu_res.content.include?('hacker_page.aspx')
+        sleep 3
+      else
+        break
+      end
+    end
 
     options = Hash[ @doc.css('input[type="submit"]').map{|d| [d[:name], d[:value]]} ]
     button = options.find{|k, v| v.include?("#{@year-1911}#{@term}查詢")}
