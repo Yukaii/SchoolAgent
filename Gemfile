@@ -64,6 +64,7 @@ gem 'rmagick', require: false
 gem 'rename'
 
 gem 'thin'
+gem "rack-timeout"
 
 group :development do
   gem 'better_errors', '~> 2.0.0'
