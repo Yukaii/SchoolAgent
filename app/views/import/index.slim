@@ -1,9 +1,9 @@
 .container
   = form_tag '/import', id: 'import-form'
     p
-      | 請依序填入學生資訊系統的各項登入資訊
+      | 請依序填入學生資訊系統的各項登入資訊，然後按一鍵匯入就好啦~
     p
-      | 竟然不用輸入驗證碼，真是太神奇啦！
+      | 竟然還不用輸入圖片驗證碼，太神奇啦！
 
     .row.form-group
       label for="studentno" 學號
@@ -19,4 +19,4 @@
       = text_field_tag 'password', nil, type: :password, :class => 'input-group form-control', required: ''
     br
     .row
-      = submit_tag '一鍵匯入', 'class': 'btn btn-default', id: 'import-submit'
+      = submit_tag '一·鍵·匯·入', 'class': 'btn btn-default', id: 'import-submit'

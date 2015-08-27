@@ -11,11 +11,12 @@ html
     .container-fluid
       = render 'partials/navbar'
 
-      - flash.each do |k, v|
-        p class="alert alert-info alert-dismissible" role="alert"
-          button type="button" class="close" data-dismiss="alert" aria-label="Close"
-            span aria-hidden="true" &times;
-          = v
+      .flash-area
+        - flash.each do |k, v|
+          p class="alert alert-info alert-dismissible" role="alert"
+            button type="button" class="close" data-dismiss="alert" aria-label="Close"
+              span aria-hidden="true" &times;
+            = v
 
       = render 'partials/header'
       = yield

@@ -1,5 +1,7 @@
 
-.container
-  ul
+.container#result-container
+  h3 你匯入的課程
+
+  ul.list-group
   - @course_codes.each do |code|
-    li= code
+    li.list-group-item= code

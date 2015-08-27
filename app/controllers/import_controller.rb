@@ -12,13 +12,13 @@ class ImportController < ApplicationController
       password: params[:password]
     })
 
-    unless @course_codes.blank?
+    if !@course_codes.blank?
       render :result
     else
-      if @course_codes.empty?
-        flash[:warning] = "您沒有選課的資料哦"
-      else
+      if @course_codes.nil?
         flash[:error] = "發生錯誤，請稍候在重試"
+      else
+        flash[:warning] = "您沒有選課的資料哦"
       end
       redirect_to root_path
     end
