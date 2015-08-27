@@ -30,8 +30,10 @@ module CourseAPI
     end
 
     def get_courses course_codes, organization_code
+      org_code = organization_code && organization_code.downcase || "ntust"
+
       course_codes.map { |gc|
-        JSON.parse(clnt.get_content("https://colorgy.io:443/api/v1/#{organization_code.downcase}/courses.json?filter[general_code]=#{gc}&filter[year]=#{current_year}&filter[term]=#{current_term}&#{token_param}"))[0]
+        JSON.parse(clnt.get_content("https://colorgy.io:443/api/v1/#{org_code}/courses.json?filter[general_code]=#{gc}&filter[year]=#{current_year}&filter[term]=#{current_term}&#{token_param}"))[0]
       }.reject(&:blank?)
     end
 
