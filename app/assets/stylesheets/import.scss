@@ -8,12 +8,13 @@ html, body {
 }
 
 body {
-  padding: 0.5em 0;
+  padding: 0.5em 0 3em;
 }
 
 #import-form {
   max-width: 20em;
   margin: 0 auto;
+  padding-bottom: 2em;
 }
 
 .title {
@@ -31,4 +32,5 @@ body {
 #result-container {
   max-width: 20em;
   margin: 0 auto;
+  padding-bottom: 2em;
 }
