@@ -1,7 +1,24 @@
 
 .container#result-container
-  h3 你匯入的課程
+  h3 匯入的課程有...
 
-  ul.list-group
-  - @course_codes.each do |code|
-    li.list-group-item= code
+  table.table.table-striped
+    thread
+      th #
+      th 課程名稱
+      th 課程代碼
+    - @courses.each_with_index do |course, _i|
+      tr
+        td= _i+1
+        td= course["name"]
+        td= course["general_code"]
+
+  p 那就這樣啦~
+  p
+    | 趕快前往
+    a href="https://table.colorgy.io"= " Colorgy Table "
+    | 進行各種有趣奇妙的活動吧，有空也來
+    a href="https://www.facebook.com/pages/Colorgy/1529686803975150"= " Colorgy 粉絲專頁 "
+    | 逛逛吧 XD
+
+  = render 'partials/fb_page'

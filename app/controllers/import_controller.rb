@@ -13,6 +13,8 @@ class ImportController < ApplicationController
     })
 
     if !@course_codes.blank?
+      # CourseUpdateWorker.perform_async(course_codes: @course_codes, user_id: current_user.id)
+      @courses = CourseAPI.get_courses(@course_codes, current_user.organization_code)
       render :result
     else
       if @course_codes.nil?
