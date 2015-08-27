@@ -1,5 +1,21 @@
-.container
+.container#index-container
+  h2.title 課程匯入(小幫手)
+
+  p
+    a href="http://www.ntust.edu.tw/home.php"= "118 "
+    | 專用的
+    a href="https://table.colorgy.io" = " Colorgy Table "
+    | 課程匯入小工具，填入學生資訊系統的登入資料，就可以自動匯入課程至 Colorgy Table。
+  p
+    | 本程式不會記錄登錄資訊，若感到不安可以至
+    a href="https://github.com/Yukaii/SchoolAgent"= " Github "
+    | 查看，或者是拒絕使用 XD
+
   - if current_user.blank?
-    = link_to '請先登入 Colorgy', user_omniauth_authorize_path(:colorgy)
+    a href=user_omniauth_authorize_path(:colorgy)
+      button type="button" class="btn btn-default"
+        | 請先登入 Colorgy
   - else
-    = link_to '開始匯入', import_path
+    a href=import_path
+      button type="button" class="btn btn-default pull-right"
+        | 開始匯入

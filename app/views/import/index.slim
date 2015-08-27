@@ -1,16 +1,21 @@
 .container
   = form_tag '/import', id: 'import-form'
-    .row
-      | 學號
+    p
+      | 請依序填入學生資訊系統的各項登入資訊
+    p
+      | 竟然不用輸入驗證碼，真是太神奇啦！
+
+    .row.form-group
+      label for="studentno" 學號
       = text_field_tag 'studentno', nil, :class => 'input-group form-control', required: ''
-    .row
-      | 身份證
+    .row.form-group
+      label for="idcard" 身份證
       = text_field_tag 'idcard', nil, :class => 'input-group form-control', required: ''
-    .row
-      | 生日(811010)
+    .row.form-group
+      label for="birthday" 生日(811010)
       = text_field_tag 'birthday', nil, :class => 'input-group form-control', required: ''
-    .row
-      | 密碼
+    .row.form-group
+      label for="password" 密碼
       = text_field_tag 'password', nil, type: :password, :class => 'input-group form-control', required: ''
     br
     .row

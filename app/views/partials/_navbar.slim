@@ -1,4 +1,19 @@
-ul.navbar
-  li= link_to '首頁', root_path
-  - if current_user.blank?
-    li= link_to '登入', user_omniauth_authorize_path(:colorgy)
+nav.navbar.navbar-inverse#main-navbar
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse-1" data-toggle="collapse" type="button"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=root_path 課程小幫手
+
+    #navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li= link_to '首頁', root_path
+        li= link_to '匯入', import_path
+
+      ul.nav.navbar-nav.navbar-right
+        - if current_user.blank?
+          li= link_to '登入', user_omniauth_authorize_path(:colorgy)
+        - else
+          li= link_to '登出', sign_out_url
