@@ -234,7 +234,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :colorgy, ENV['APP_ID'], ENV['APP_SECRET'],
-                     scope: 'public email identity offline_access',
+                     scope: 'public email identity offline_access api:write',
                      fields: [:id, :uuid, :email, :name, :avatar_url, :primary_identity, :cover_photo_url, :gender, :fbid, :organization_code, :department_code],
                      includes: [:primary_identity],
                      client_options: { site: 'https://colorgy.io' }

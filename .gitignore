@@ -18,3 +18,6 @@
 
 .powder
 .env
+
+Procfile.dev
+.foreman
