@@ -16,7 +16,8 @@ module CourseAPI
       codes_union = courses_taken_codes | courses_mapped.map{|c| c["code"]}
       import_codes = codes_union - courses_taken_codes
 
-      # pending here
+      import_codes = [] if import_codes.nil?
+
       # 需要匯入的課程就有...
       import_courses = courses_mapped.select{ |c| import_codes.include?(c["code"]) }
       import_courses.each do |course|
