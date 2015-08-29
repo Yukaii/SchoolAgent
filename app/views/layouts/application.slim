@@ -6,7 +6,10 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
     meta name="viewport" content="width=device-width,initial-scale=1"
-
+    meta property="og:title" content="#{@title || "課程匯入小幫手"}"
+    meta property="og:type" content="website"
+    meta property="og:image" content="http://i.imgur.com/q0JpWQ6.jpg"
+    meta property="og:site_name" content="台科課程小幫手"
   body
     = render 'partials/fb_sdk'
     .container-fluid
